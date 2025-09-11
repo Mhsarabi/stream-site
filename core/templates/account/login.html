@@ -35,19 +35,22 @@
                <div class="sign-in-page-data">
                   <div class="sign-in-from w-100 m-auto">
                      <h3 class="mb-3 text-center">ورود</h3>
-                     <form class="mt-4" id="login-form" action="">
-                        <div class="form-group">                                 
-                           <input type="text" class="form-control mb-0" id="user_name" placeholder="نام کاربری" autocomplete="off" required>
-                        </div>
-                        <div class="form-group">                                 
-                           <input type="password" class="form-control mb-0" id="password" placeholder="رمز عبور" required>
-                        </div>
-                           <div class="sign-info">
-                              <button type="submit" class="btn btn-hover">ورود</button>
-                              <div class="custom-control custom-checkbox d-inline-block">
-                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                              </div>                                
-                           </div>                                    
+                     <form method="post" novalidate>
+                     {% csrf_token %}
+                     {{ form.non_field_errors }}
+                     <div class="form-group">
+                        {{ form.user_name.label_tag }}
+                        {{ form.user_name }}
+                        {{ form.user_name.errors }}
+                     </div>
+                     <div class="form-group">
+                        {{ form.password.label_tag }}
+                        {{ form.password }}
+                        {{ form.password.errors }}
+                     </div>
+                     <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger">ورود</button>
+                     </div>
                      </form>
                   </div>
                </div>
@@ -56,7 +59,7 @@
                    حساب ندارید ؟ <a href="{%url 'profile:register'%}" class="text-primary ml-2">ثبت نام</a>
                   </div>
                   <div class="d-flex justify-content-center links">
-                     <a href="reset-password.html" class="f-link">رمز عبور خود را فراموش کرده اید؟</a>
+                     <a href="{%url 'profile:password_reset'%}" class="f-link">رمز عبور خود را فراموش کرده اید؟</a>
                   </div>
                </div>
             </div>
@@ -85,7 +88,5 @@
 <script src="{%static 'js/slick-animation.min.js'%}"></script>
 <!-- Custom JS-->
 <script src="{%static 'js/custom.js'%}"></script>
-<!-- connection api-->
-<script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>

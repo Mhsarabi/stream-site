@@ -11,6 +11,8 @@ from user_profile.models import User
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from jwt.exceptions import ExpiredSignatureError,InvalidSignatureError
+from django.contrib.auth import logout
+from rest_framework.permissions import IsAuthenticated
 import jwt
 
 # register

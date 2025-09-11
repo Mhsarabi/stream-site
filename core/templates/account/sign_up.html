@@ -32,8 +32,8 @@
             <div class="sign-user_card ">                    
                <div class="sign-in-page-data">
                   <div class="sign-in-from w-100 m-auto">
-                     <form id="register-form" action="">
-                        <div class="row">
+                     <form method="post">
+                        <!-- <div class="row">
                            <div class="col-md-6">
                               <div class="form-group">
                                  <label>نام کاربری</label>
@@ -59,8 +59,9 @@
                               </div>
                            </div>
                            
-                        </div>
-                      
+                        </div> -->
+                          {% csrf_token %}
+                          {{ form.as_p }}
                         <div class="d-flex justify-content-center">
                           <button type="submit" class="btn btn-hover my-2">ثبت نام</button>
                        </div>
@@ -70,7 +71,7 @@
                </div>    
                <div class="mt-3">
                   <div class="d-flex justify-content-center links">
-                    قبلاً حساب کاربری دارید؟ <a href="login.html" class="text-primary ml-2">ورود</a>
+                    قبلاً حساب کاربری دارید؟ <a href="{%url 'profile:login'%}" class="text-primary ml-2">ورود</a>
                   </div>                        
                </div>
             </div>
@@ -97,7 +98,7 @@
 <script src="{%static 'js/slick-animation.min.js'}"></script>
 <!-- Custom JS-->
 <script src="{%static 'js/custom.js'%}"></script>
-<!-- connection api-->
-<script src="{% static 'js/register.js' %}"></script>
+<!-- connection api
+<script src="{% static 'js/register.js' %}"></script> -->
 </body>
 </html>

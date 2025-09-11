@@ -140,16 +140,16 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL='user_profile.User'
-LOGIN_URL = '/api-auth/login/'
-REST_FRAMEWORK={
-    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.openapi.AutoSchema',
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    ]
-}
+# LOGIN_URL = '/api-auth/login/'
+# REST_FRAMEWORK={
+#     'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.openapi.AutoSchema',
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.BasicAuthentication',
+#         'rest_framework.authentication.SessionAuthentication',
+#         'rest_framework.authentication.TokenAuthentication',
+#         'rest_framework_simplejwt.authentication.JWTAuthentication'
+#     ]
+# }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),      
