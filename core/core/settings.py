@@ -44,12 +44,14 @@ INSTALLED_APPS = [
 
     # my apps
     "user_profile",
+    "movie",
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'mail_templated',
     'drf_yasg',
     'django_celery_beat',
+    'about_us',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,9 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT=BASE_DIR/'staticfiles'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS=[BASE_DIR/"static"]
 
