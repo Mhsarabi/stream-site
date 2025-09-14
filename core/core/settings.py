@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "user_profile",
     "movie",
     'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'mail_templated',
     'drf_yasg',

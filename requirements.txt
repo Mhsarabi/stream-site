@@ -9,6 +9,8 @@ djangorestframework-simplejwt
 djoser
 drf-yasg[validation]
 
+# calender
+jdatetime
 
 # email
 django-mail-templated

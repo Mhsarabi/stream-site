@@ -1,12 +1,12 @@
-from django.views.generic import FormView
+from django.views.generic import FormView,DetailView
 from django.shortcuts import redirect, get_object_or_404
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.urls import reverse_lazy
 import jwt
-from .forms import RegisterUserForm,LoginForm
-from .models import User
-from user_profile.api.utils import EmailThreading  
+from user_profile.forms import RegisterUserForm,LoginForm
+from user_profile.models import User
+from user_profile.email_connection.utils import EmailThreading  
 from django.http import HttpResponseRedirect
 from jwt.exceptions import ExpiredSignatureError, InvalidSignatureError
 from django.views import View

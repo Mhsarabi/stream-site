@@ -5,7 +5,7 @@ from .forms import *
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
-    list_display=["user_name","email","is_superuser","is_active",'is_verified']
+    list_display=["user_name","email","image_profile","is_superuser","is_active",'is_verified']
     list_filter=["user_name","email","is_superuser","is_active",'is_verified']
     search_fields=("email","user_name")
     ordering=('email',"user_name")
@@ -13,7 +13,7 @@ class CustomUserAdmin(UserAdmin):
     fieldsets=(
         ("personal_data",{
             "fields":(
-                "user_name","email","password"
+                "user_name","email","image_profile","password"
             )
         }),
         ("group_permission",{
@@ -35,7 +35,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets=(
         ("personal_date",{
             "fields":(
-                "user_name","email","password1","password2","is_staff","is_active","is_superuser"
+                "user_name","email","image_profile","password1","password2","is_staff","is_active","is_superuser"
             )
         }),
     )

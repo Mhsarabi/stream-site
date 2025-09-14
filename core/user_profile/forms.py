@@ -39,7 +39,7 @@ class RegisterUserForm(forms.ModelForm):
         }
         labels = {
             'user_name': 'نام کاربری',
-            'email': 'ایمیل'
+            'email': 'ایمیل',
         }
 
     def clean_email(self):
@@ -90,3 +90,33 @@ class LoginForm(forms.Form):
                 raise forms.ValidationError("حساب کاربری شما فعال نیست.")
             cleaned_data['user'] = user
         return cleaned_data
+    
+class ProfileUpdateForm(forms.ModelForm):
+    password = forms.CharField(
+        label='رمز جدید',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control mb-0',
+            'placeholder': 'رمز جدید را وارد کن',
+            'autocomplete': 'new-password',
+        }),
+        required=False 
+    )
+    class Meta:
+        model=User
+        fields=['image_profile', 'email']
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control mb-0',
+                'placeholder': 'ایمیل جدید را وارد کن',
+                'autocomplete': 'off',
+                'required': True,
+            }),
+        }
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        if password:
+            user.set_password(password)  
+        if commit:
+            user.save()
+        return user
