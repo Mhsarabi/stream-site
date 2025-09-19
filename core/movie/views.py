@@ -32,6 +32,17 @@ class MovieView(ListView):
                 'empty': range(empty_stars),
             }
         return movies
+    
 
+class MoviePageView(ListView):
+    template_name='movie/movie-category.html'
+    model=Movie
+
+    def get_context_data(self, **kwargs):
+      context=super().get_context_data(**kwargs)
+      context['movie_slide']=Movie.objects.filter(type='poster')
+      context['movie_product']=Movie.objects.filter(type='product')
+      context['movie_future']=Movie.objects.filter(type='future')
+      return context
 
     
