@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_celery_beat',
     'about_us',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

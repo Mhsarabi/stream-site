@@ -32,6 +32,20 @@ Index Of Script
 			jQuery(pill).addClass('active show');
 		}
 
+		jQuery('.episodes-slider').owlCarousel({
+			loop: true,
+			margin: 20,
+			nav: true,
+			navText: ["<i class='ri-arrow-left-s-line'></i>", "<i class='ri-arrow-right-s-line'></i>"],
+			dots: false,
+			rtl: true,
+			responsive: {
+				0: { items: 1 },
+				600: { items: 1 },
+				1000: { items: 4 }
+			}
+		});
+
 		/*---------------------------------------------------------------------
 			Sticky Header Animation & Height
 		----------------------------------------------------------------------- */
@@ -373,23 +387,19 @@ Index Of Script
 		/*---------------------------------------------------------------------
 			Owl Carousel
 		----------------------------------------------------------------------- */
-		jQuery('.episodes-slider1').owlCarousel({
-			loop:true,
-			margin:20,
-			nav:true,
-			navText: ["<i class='ri-arrow-left-s-line'></i>", "<i class='ri-arrow-right-s-line'></i>"],
-			dots:false,
-			responsive:{
-				0:{
-					items:1
-				},
-				600:{
-					items:1
-				},
-				1000:{
-					items:4
+		jQuery('.episodes-slider').each(function() {
+			jQuery(this).owlCarousel({
+				loop:true,
+				margin:20,
+				nav:true,
+				navText: ["<i class='ri-arrow-left-s-line'></i>", "<i class='ri-arrow-right-s-line'></i>"],
+				dots:false,
+				responsive:{
+					0:{ items:1 },
+					600:{ items:1 },
+					1000:{ items:4 }
 				}
-			}
+			});
 		});
 		
 		/*---------------------------------------------------------------------

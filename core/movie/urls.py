@@ -4,5 +4,5 @@ from movie import views
 app_name='movie'
 
 urlpatterns=[
-    path('',views.StreamProducts.as_view(),name='main')
+    path('',views.MovieView.as_view(),name='main'),
 ]
