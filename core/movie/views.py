@@ -44,5 +44,17 @@ class MoviePageView(ListView):
       context['movie_product']=Movie.objects.filter(type='product')
       context['movie_future']=Movie.objects.filter(type='future')
       return context
+ 
+    
+class SeriePageView(ListView):
+    template_name='movie/show-category.html'
+    model=Series
+
+    def get_context_data(self, **kwargs):
+      context=super().get_context_data(**kwargs)
+      context['serie_slide']=Series.objects.filter(type='poster')
+      context['serie_product']=Series.objects.filter(type='product')
+      context['serie_future']=Series.objects.filter(type='future')
+      return context
 
     

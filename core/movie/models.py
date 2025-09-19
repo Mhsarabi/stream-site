@@ -24,7 +24,7 @@ class Genre(models.Model):
 
 class Movie(models.Model):
     status_choices=[('poster', 'poster'),('product', 'product'),('future', 'future')]
-    title = models.CharField(max_length=255)
+    title = models.CharField(unique=True,max_length=255)
     description = models.TextField(blank=True)
     rating = models.FloatField(default=0.0)
     duration_minutes = models.PositiveIntegerField(help_text="مدت فیلم به دقیقه")
@@ -67,7 +67,7 @@ class Series(models.Model):
         ('product', 'product'),
         ('future', 'future')
     ]
-    title = models.CharField(max_length=255)
+    title = models.CharField(unique=True,max_length=255)
     description = models.TextField(blank=True)
     rating = models.FloatField(default=0.0)
     actors = models.ManyToManyField(Actor, related_name="series")
