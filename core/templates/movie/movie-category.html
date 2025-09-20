@@ -116,13 +116,13 @@
                                        <img src="{{movie.poster.url}}" class="img-fluid" alt="">
                                     </div>
                                     <div class="block-description">
-                                       <h6 class="iq-title"><a href="show-details.html">{{movie.title}}</a></h6>
+                                       <h6 class="iq-title"><a href="{%url 'movie:movie_detail' movie.slug%}">{{movie.title}}</a></h6>
                                        <div class="movie-time d-flex align-items-center my-2">
                                           <!-- <div class="badge badge-secondary p-1 mr-2">5+</div> -->
                                           <span class="text-white">{{movie.formatted_duration}}</span>
                                        </div>
                                        <div class="hover-buttons">
-                                          <a href="show-details.html" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                          <a href="{%url 'movie:movie_detail' movie.slug%}" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
                                           تماشا کن
                                           </a>
                                        </div>
@@ -332,13 +332,13 @@
                                     <img src="{{movie.poster.url}}" class="img-fluid" alt="">
                                  </div>
                                  <div class="block-description">
-                                    <h6 class="iq-title"><a href="show-details.html">{{movie.title}}</a></h6>
+                                    <h6 class="iq-title"><a href="{%url 'movie:movie_detail' movie.slug%}">{{movie.title}}</a></h6>
                                     <div class="movie-time d-flex align-items-center my-2">
                                        <!-- <div class="badge badge-secondary p-1 mr-2">10+</div> -->
                                        <span class="text-white">{{movie.formatted_duration}}</span>
                                     </div>
                                     <div class="hover-buttons">
-                                       <a href="show-details.html" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                       <a href="{%url 'movie:movie_detail' movie.slug%}" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
                                           تماشا کن</a>
                                     </div>
                                  </div>

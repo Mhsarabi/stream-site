@@ -83,6 +83,7 @@ class Series(models.Model):
     poster = models.ImageField(upload_to='series/posters/', null=True, blank=True)
     trailer = models.FileField(upload_to='series/trailers/', null=True, blank=True)
     type = models.CharField(max_length=10, choices=status_choices, default='product')
+    slug = models.SlugField(unique=True,blank=True)
 
     def __str__(self):
         return f"{self.title} ({self.release_date.year if self.release_date else 'N/A'})"
@@ -92,23 +93,17 @@ class Series(models.Model):
         self.rating = avg_rating if avg_rating else 0
         self.save()
 
-    def formatted_duration(self):
-        hours = self.duration_minutes // 60
-        minutes = self.duration_minutes % 60
-
-        parts = []
-        if hours:
-            parts.append(f"{hours} ساعت")
-        if minutes:
-            parts.append(f"{minutes} دقیقه")
-
-        return " و ".join(parts) if parts else "نامشخص"
     
     def actors_list(self):
         return ", ".join(actor.name for actor in self.actors.all())
 
     def genres_list(self):
         return " | ".join(genre.name for genre in self.genres.all())
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class MovieRating(models.Model):
