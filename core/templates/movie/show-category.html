@@ -33,7 +33,7 @@
       <div id="tvshows-slider" class="iq-rtl-direction">
          {%for serie in serie_slide%}
             <div>
-            <a href="show-details.html">
+            <a href="{%url 'movie:series_detail' serie.slug%}">
                <div class="shows-img">
                   <img src="{{serie.poster.url}}" class="w-100" alt="">
                   <div class="shows-content">
@@ -123,7 +123,7 @@
                                        <!-- <span class="text-white">2 فصل</span> -->
                                     </div>
                                     <div class="hover-buttons">
-                                       <a href="movie-details.html" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                       <a href="{%url 'movie:series_detail' serie.slug%}" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
                                          تماشا کن</a>
                                     </div>
                                  </div>
@@ -339,7 +339,7 @@
                                        <!-- <span class="text-white">3 فصل</span> -->
                                     </div>
                                     <div class="hover-buttons">
-                                       <a href="movie-details.html" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                       <a href="{%url 'movie:series_detail' serie.slug%}" role="button" class="btn btn-hover"><i class="fa fa-play mr-1" aria-hidden="true"></i>
                                           تماشا کن</a>
                                     </div>
                                  </div>

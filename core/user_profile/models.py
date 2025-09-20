@@ -38,7 +38,7 @@ class User(AbstractBaseUser,PermissionsMixin):
    is_verified=models.BooleanField(default=False)
    created_date=models.DateTimeField(auto_now_add=True)
    updated_date=models.DateTimeField(auto_now=True)
-   image_profile=models.ImageField(upload_to='account/profile',null=True,blank=True,default='static/images/user.jpg')
+   image_profile=models.ImageField(upload_to='account/profile',null=True,blank=True)
 
    USERNAME_FIELD='user_name'
    REQUIRED_FIELDS=['email']

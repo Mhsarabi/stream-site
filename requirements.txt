@@ -2,12 +2,8 @@
 django >3.2,<3.3
 python-decouple 
 pillow
-djangorestframework
 markdown       
 django-filter  
-djangorestframework-simplejwt
-djoser
-drf-yasg[validation]
 
 # calender
 jdatetime
@@ -15,11 +11,6 @@ jdatetime
 # email
 django-mail-templated
 
-# background process and cash
-celery
-redis
-django-celery-beat
-django-redis
 
 # cleaning the repository
 django-cleanup

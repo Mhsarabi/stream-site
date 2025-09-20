@@ -45,11 +45,7 @@ INSTALLED_APPS = [
     # my apps
     "user_profile",
     "movie",
-    # 'rest_framework',
-    # 'rest_framework.authtoken',
-    'rest_framework_simplejwt',
     'mail_templated',
-    'drf_yasg',
     'django_celery_beat',
     'about_us',
     'django_cleanup.apps.CleanupConfig',

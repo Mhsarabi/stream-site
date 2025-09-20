@@ -88,10 +88,10 @@
                                     </li>
                                     <li>
                                        <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
-                                          {%if request.user.image_profile%}
-                                             <img src="{{request.user.image_profile.url}}" class="img-fluid avatar-40 rounded-circle" alt="user">
+                                          {%if request.user.image_profile and request.user.image_profile.url%}
+                                             <img src="{{request.user.image_profile.url}}" class="img-fluid avatar-40 rounded-circle" alt="{{request.user.user_name}}">
                                           {%else%}
-                                             <img src="{%static 'images/user/user.jpg'%}" class="img-fluid avatar-40 rounded-circle" alt="user">
+                                             <img src="{%static 'images/user/user.jpg'%}" class="img-fluid avatar-40 rounded-circle" alt="{{request.user.user_name}}">
                                           {%endif%}
                                        </a>
                                        <div class="iq-sub-dropdown iq-user-dropdown">

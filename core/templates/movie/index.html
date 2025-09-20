@@ -240,7 +240,7 @@
                               </div>
                            </div>
                               <div class="d-flex align-items-center r-mb-23" data-animation-in="fadeInUp" data-delay-in="1">
-                                 <a href="movie-details.html" class="btn btn-hover iq-button"><i class="fa fa-play mr-2"
+                                 <a href="{%url 'movie:movie_detail' movie.slug%}" class="btn btn-hover iq-button"><i class="fa fa-play mr-2"
                                     aria-hidden="true"></i>الان تماشا کنید</a>
                                  <a href="{%url 'movie:movie_detail' movie.slug%}" class="btn btn-link">جزئیات بیشتر</a>
                               </div>
@@ -1496,7 +1496,7 @@
                   <div class="col-sm-12 overflow-hidden">
                      <div class="iq-main-header d-flex align-items-center justify-content-between">                        
                         <h4 class="main-title">سریال های آینده</h4>
-                        <a class="iq-view-all" href="movie-category.html">مشاهده همه</a>                        
+                        <a class="iq-view-all" href="{%url 'movie:series'%}">مشاهده همه</a>                        
                      </div>
                      <div class="tvthrillers-contens">
                         <ul class="favorites-slider list-inline row p-0 mb-0 iq-rtl-direction">
@@ -1507,7 +1507,7 @@
                                           <img src="{{serie.poster.url}}" class="img-fluid" alt="">
                                        </div>
                                        <div class="block-description">
-                                          <h6 class="iq-title"><a href="show-details.html">{{serie.title}}</a></h6>
+                                          <h6 class="iq-title"><a href="{%url 'movie:series_detail' serie.slug%}">{{serie.title}}</a></h6>
                                           <div class="movie-time d-flex align-items-center my-2 iq-ltr-direction">
                                              <!-- <div class="badge badge-secondary p-1 mr-2">15+</div> -->
                                              <!-- <span class="text-white">2 فصل</span> -->

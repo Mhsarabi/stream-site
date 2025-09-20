@@ -8,6 +8,7 @@ urlpatterns=[
     path('register/',authentication.RegistrationView.as_view(),name='register'),
     path('login/',authentication.login_user.as_view(),name='login'),
     path("logout/", LogoutView.as_view(next_page="/account/login/"), name="logout"),
+    path("activation/confirm/<str:token>/", authentication.ActivationView.as_view(), name="activation"),
     path("reset-password/", authentication.PasswordResetRequestView.as_view(), name="password_reset"),
     path("reset-password/<str:token>/", authentication.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
     path('profile',profile.Profile.as_view(),name='user_profile'),
