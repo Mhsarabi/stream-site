@@ -149,3 +149,13 @@ class Episode(models.Model):
 
     def __str__(self):
         return f"{self.series.title} - قسمت {self.episode_number}"
+    
+
+class DownloadLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    ip_address = models.GenericIPAddressField()
+    url = models.CharField(max_length=500)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.url} - {self.timestamp}"

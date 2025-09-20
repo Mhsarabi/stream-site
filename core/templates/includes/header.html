@@ -176,7 +176,9 @@
                                           <li class="menu-item"><a href="pricing-plan-1.html">طرح قیمت گذاری 1</a></li>
                                           <li class="menu-item"><a href="pricing-plan-2.html">طرح قیمت گذاری 2</a></li>
                                        </ul> -->
-                                    </li>
+                                       {% if request.user.is_staff %}
+                                         <li class="menu-item"><a href="{%url 'movie:download_report'%}">کنترل کردن دانلود ها</a></li>
+                                       {% endif %}
                                     </ul>
                                  </li>
                               </ul>

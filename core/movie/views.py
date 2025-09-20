@@ -1,7 +1,11 @@
 from django.shortcuts import render,get_object_or_404
+from django.http import FileResponse, Http404
 from django.views.generic import ListView,DetailView
 from django.views import View
-from .models import Movie,Series,Episode
+from .models import Movie,Series,Episode,DownloadLog
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 class MovieView(ListView):
@@ -60,12 +64,13 @@ class SeriePageView(ListView):
       return context
 
 
-class MovieDetailView(DetailView):
+class MovieDetailView(LoginRequiredMixin,DetailView):
     model = Movie
     template_name ='movie/movie-details.html'
     context_object_name ='movie'
     slug_field ='slug'
     slug_url_kwarg ='slug'
+    login_url = '/account/login/'
 
     def get_context_data(self, **kwargs):
        context=super().get_context_data(**kwargs)
@@ -86,8 +91,9 @@ class SerieDetailView(DetailView):
         context['episodes'] =series.episodes.all()  
         return context
     
-class EpisodeDetailView(View):
+class EpisodeDetailView(LoginRequiredMixin,View):
     template_name = 'movie/episode-detail.html'
+    login_url = '/account/login/'
 
     def get(self, request, series_slug, episode_number):
         serie = get_object_or_404(Series, slug=series_slug)
@@ -99,5 +105,46 @@ class EpisodeDetailView(View):
             "episodes": serie.episodes.all(), 
             "series":Series.objects.all()
         })
+    
+@login_required(login_url='/account/login/')    
+def download_movie(request, slug):
+    movie = get_object_or_404(Movie, slug=slug)
+    if not movie.trailer:
+        raise Http404("فیلم پیدا نشد")
+
+    DownloadLog.objects.create(
+        user=request.user,
+        ip_address=get_client_ip(request),
+        url=request.path
+    )
+
+    return FileResponse(movie.trailer.open('rb'), as_attachment=True, filename=f"{movie.title}.mp4")
+
+@login_required(login_url='/account/login/')
+def download_episode(request, series_slug, episode_number):
+    episode = get_object_or_404(Episode, series__slug=series_slug, episode_number=episode_number)
+    if not episode.video_file:
+        raise Http404("قسمت پیدا نشد")
+
+    DownloadLog.objects.create(
+        user=request.user,
+        ip_address=get_client_ip(request),
+        url=request.path
+    )
+
+    return FileResponse(episode.video_file.open('rb'), as_attachment=True, filename=f"{episode.series.title}_ep{episode.episode_number}.mp4")
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+@staff_member_required
+def download_report(request):
+    logs = DownloadLog.objects.select_related("user").order_by("-timestamp")
+    return render(request, "movie/control_downloads.html", {"logs": logs})
 
     

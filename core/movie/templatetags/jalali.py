@@ -1,22 +1,11 @@
 # app/templatetags/jalali.py
 from django import template
 import jdatetime
-import pytz
 
 register = template.Library()
 
 @register.filter
-@register.filter
 def jalali(value, fmt="%Y/%m/%d - %H:%M"):
     if not value:
         return ""
-    tehran_tz = pytz.timezone("Asia/Tehran")
-    
-    if value.tzinfo is None:
-        import pytz
-        value = pytz.UTC.localize(value)
-
-
-    value = value.astimezone(tehran_tz)
-    
     return jdatetime.datetime.fromgregorian(datetime=value).strftime(fmt)

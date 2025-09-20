@@ -117,7 +117,7 @@
                                     <img src="{{serie.poster.url}}" class="img-fluid" alt="">
                                  </div>
                                  <div class="block-description">
-                                    <h6 class="iq-title"><a href="movie-details.html">{{serie.title}}</a></h6>
+                                    <h6 class="iq-title"><a href="{%url 'movie:series_detail' serie.slug%}">{{serie.title}}</a></h6>
                                     <div class="movie-time d-flex align-items-center my-2">
                                        <!-- <div class="badge badge-secondary p-1 mr-2">15+</div> -->
                                        <!-- <span class="text-white">2 فصل</span> -->
@@ -333,7 +333,7 @@
                                     <img src="{{serie.poster.url}}" class="img-fluid" alt="">
                                  </div>
                                  <div class="block-description">
-                                    <h6 class="iq-title"><a href="movie-details.html">{{serie.title}}</a></h6>
+                                    <h6 class="iq-title"><a href="{%url 'movie:series_detail' serie.slug%}">{{serie.title}}</a></h6>
                                     <div class="movie-time d-flex align-items-center my-2">
                                        <!-- <div class="badge badge-secondary p-1 mr-2">19+</div> -->
                                        <!-- <span class="text-white">3 فصل</span> -->

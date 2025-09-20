@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # my apps
     "user_profile",
     "movie",
-    'rest_framework',
+    # 'rest_framework',
     # 'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'mail_templated',
@@ -121,13 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Asia/Tehran'
+USE_TZ = True
 
 USE_I18N = True
 
 USE_TZ = True
 
-
+LOGIN_URL = '/account/login/'
+LOGIN_REDIRECT_URL = '/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
