@@ -1,3 +1,4 @@
+from django.utils.text import slugify
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models import Avg
@@ -34,6 +35,7 @@ class Movie(models.Model):
     poster = models.ImageField(upload_to='movies/posters/', null=True, blank=True)
     trailer = models.FileField(upload_to='movies/trailers/', null=True, blank=True)
     type=models.CharField(max_length=10,choices=status_choices,default='product')
+    slug = models.SlugField(unique=True,blank=True)
 
     def __str__(self):
         return f"{self.title} ({self.release_date.year if self.release_date else 'N/A'})"
@@ -60,6 +62,11 @@ class Movie(models.Model):
 
     def genres_list(self):
         return " | ".join(genre.name for genre in self.genres.all())
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:  
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 class Series(models.Model):
     status_choices = [

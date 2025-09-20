@@ -242,7 +242,7 @@
                               <div class="d-flex align-items-center r-mb-23" data-animation-in="fadeInUp" data-delay-in="1">
                                  <a href="movie-details.html" class="btn btn-hover iq-button"><i class="fa fa-play mr-2"
                                     aria-hidden="true"></i>الان تماشا کنید</a>
-                                 <a href="movie-details.html" class="btn btn-link">جزئیات بیشتر</a>
+                                 <a href="{%url 'movie:movie_detail' movie.slug%}" class="btn btn-link">جزئیات بیشتر</a>
                               </div>
                            </div>
                            <div class="col-xl-5 col-lg-12 col-md-12 trailor-video  text-center">
@@ -281,7 +281,7 @@
                   <div class="col-sm-12 overflow-hidden">
                      <div class="iq-main-header d-flex align-items-center justify-content-between">
                         <h4 class="main-title">جدیدترین فیلم ها</h4>
-                        <a class="iq-view-all" href="movie-category.html">مشاهده همه</a>                   
+                        <a class="iq-view-all" href="{%url 'movie:movies'%}">مشاهده همه</a>                   
                      </div>
                      <div class="favorites-contens">
                         <ul class="favorites-slider list-inline  row p-0 mb-0 iq-rtl-direction">
@@ -293,13 +293,13 @@
                                           <img src="{{movie.poster.url}}" class="img-fluid" alt="">
                                        </div>
                                        <div class="block-description">
-                                          <h6 class="iq-title"><a href="movie-details.html">{{movie.title}}</a></h6>
+                                          <h6 class="iq-title"><a href="{%url 'movie:movie_detail' movie.slug%}">{{movie.title}}</a></h6>
                                           <div class="movie-time d-flex align-items-center my-2 iq-ltr-direction">
                                              <!-- <div class="badge badge-secondary p-1 mr-2">13+</div> -->
                                              <span class="text-white">{{movie.formatted_duration}}</span>
                                           </div>
                                           <div class="hover-buttons">
-                                             <a href="movie-details.html" role="button" class="btn btn-hover iq-button">
+                                             <a href="{%url 'movie:movie_detail' movie.slug%}" role="button" class="btn btn-hover iq-button">
                                              <i class="fa fa-play mr-1" aria-hidden="true"></i>
                                              تماشا کردن
                                              </a>
@@ -496,7 +496,7 @@
                   <div class="col-sm-12 overflow-hidden">
                      <div class="iq-main-header d-flex align-items-center justify-content-between">                        
                         <h4 class="main-title">فیلم های آینده</h4>
-                        <a class="iq-view-all" href="movie-category.html">مشاهد همه</a>
+                        <a class="iq-view-all" href="{%url 'movie:movies'%}">مشاهد همه</a>
                      </div>
                      <div class="upcoming-contens">
                         <ul class="favorites-slider list-inline row p-0 mb-0 iq-rtl-direction">
@@ -508,13 +508,13 @@
                                           <img src="{{movie.poster.url}}" class="img-fluid" alt="">
                                        </div>
                                        <div class="block-description">
-                                          <h6 class="iq-title"><a href="movie-details.html">{{movie.title}}</a></h6>
+                                          <h6 class="iq-title"><a href="{%url 'movie:movie_detail' movie.slug%}">{{movie.title}}</a></h6>
                                           <div class="movie-time d-flex align-items-center my-2 iq-ltr-direction">
                                              <!-- <div class="badge badge-secondary p-1 mr-2">5+</div> -->
                                              <span class="text-white">{{movie.formatted_duration}}</span>
                                           </div>
                                           <div class="hover-buttons">
-                                             <a href="movie-details.html" role="button" class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                                             <a href="{%url 'movie:movie_detail' movie.slug%}" role="button" class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>
                                              تماشا کردن
                                              </a>
                                           </div>
@@ -725,7 +725,7 @@
                               {%for movie in movie_rating%}
                                  <li>
                                     <div class="block-images position-relative">
-                                       <a href="movie-details.html">
+                                       <a href="{%url 'movie:movie_detail' movie.slug%}">
                                        <img src="{{movie.poster.url}}" class="img-fluid w-100" alt="">
                                        </a>
                                        <div class="block-description">
@@ -735,7 +735,7 @@
                                              <span class="text-white">{{movie.formatted_duration}}</span>
                                           </div>
                                           <div class="hover-buttons">
-                                             <a href="movie-details.html" class="btn btn-hover" tabindex="0">
+                                             <a href="{%url 'movie:movie_detail' movie.slug%}" class="btn btn-hover" tabindex="0">
                                              <i class="fa fa-play mr-1" aria-hidden="true"></i> تماشا کردن
                                              </a>
                                           </div>
@@ -1077,8 +1077,8 @@
                         </div>
                         <p>{{new_movie.description}}</p>
                         <div class="parallax-buttons">
-                           <a href="movie-details.html" class="btn btn-hover">تماشا کردن</a>
-                           <a href="movie-details.html" class="btn btn-link">جزئیات بیشتر</a>
+                           <a href="{%url 'movie:movie_detail' last_movie.slug%}" class="btn btn-hover">تماشا کردن</a>
+                           <a href="{%url 'movie:movie_detail' last_movie.slug%}" class="btn btn-link">جزئیات بیشتر</a>
                         </div>
                      </div>
                   </div>
