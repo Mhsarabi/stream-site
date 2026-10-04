@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "user_profile",
     "movie",
     'mail_templated',
-    'django_celery_beat',
     'about_us',
     'django_cleanup.apps.CleanupConfig',
 ]

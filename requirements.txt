@@ -4,6 +4,8 @@ python-decouple
 pillow
 markdown       
 django-filter  
+PyJWT
+cryptography
 
 # calender
 jdatetime
